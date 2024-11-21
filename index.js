@@ -2,25 +2,25 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const fs = require('fs');
 const xlsx = require('xlsx');
-// const scrap = async()=>{
-//     const req = await axios.get('https://sale.alibaba.com/p/dd1yk6uah/index.html?spm=a2700.product_home_newuser.scenario_overview.bestSellers&wx_navbar_transparent=true&path=/p/dd1yk6uah/index.html&ncms_spm=a27aq.27910267&prefetchKey=met&wx_xpage=true&topOfferIds=1600582299649',{
-//         headers: {
-//             "content-type": 'text/html',
-//         }
-//     })
+const scrap = async()=>{
+    const req = await axios.get('https://sale.alibaba.com/p/dd1yk6uah/index.html?spm=a2700.product_home_newuser.scenario_overview.bestSellers&wx_navbar_transparent=true&path=/p/dd1yk6uah/index.html&ncms_spm=a27aq.27910267&prefetchKey=met&wx_xpage=true&topOfferIds=1600582299649',{
+        headers: {
+            "content-type": 'text/html',
+        }
+    })
 
-//     const data = req.data;
-//     fs.writeFile('products.txt',data,(er)=>{
-//         if(er) {
-//             console.log(er);
-//             return;
-//         }
-//         else {
-//             console.log('File saved successfully');
-//         }
-//     })
-// }
-// scrap();
+    const data = req.data;
+    fs.writeFile('products.txt',data,(er)=>{
+        if(er) {
+            console.log(er);
+            return;
+        }
+        else {
+            console.log('File saved successfully');
+        }
+    })
+}
+scrap();
 
 const products = [];
 fs.readFile('products.txt', 'utf-8',(er,data)=>{
